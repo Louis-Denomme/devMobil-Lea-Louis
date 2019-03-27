@@ -7,19 +7,28 @@ export default class Accueil extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = { films: [] }
+        this.searchedText = ''
+        this.state = {
+            films: []
+        }
     }
 
     _loadFilms() {
-        getFilmsFromApiWithSearchedText("star").then(data => {
-            this.setState({ films: data.results })
-        })
+        if (this.searchedText.length > 0) {
+            getFilmsFromApiWithSearchedText(this.searchedText).then(data => {
+                this.setState({ films: data.results })
+            })
+        }
+    }
+
+    _searchTextInputChanged(text) {
+        this.searchedText = text
     }
 
     render() {
         return (
-            <View>
-                <TextInput placeholder='Rechercher' />
+            <View style={{ flex: 1, justifyContent: 'center', margin: 50 }}>
+                <TextInput placeholder='Rechercher' onChangeText={(text) => this._searchTextInputChanged(text)}/>
                 <Button title='Rechercher' onPress={() => this._loadFilms()} />
                 <FlatList
                     data={this.state.films}

@@ -1,5 +1,3 @@
-// Components/FilmItem.js
-
 import React from 'react'
 import { StyleSheet, View, FlatList, TextInput, Text } from 'react-native'
 
