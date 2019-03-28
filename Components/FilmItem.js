@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, FlatList, TextInput, Text } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 
 export default class FilmItem extends React.Component {
     render() {
