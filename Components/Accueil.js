@@ -1,8 +1,9 @@
-import React from 'react'
-import { StyleSheet, View, FlatList, TextInput, Button, Text, ActivityIndicator } from 'react-native'
-import FilmItem from './FilmItem'
-import GenreItem from './GenreItem'
-import { getFilmsFromApi, getFilmsFromApiWithSearchedText, getGenresFromApi, getFilmsFromApiByGenre, getLatestFilmsFromApi } from '../API/Api.js'
+import React from 'react';
+import { StyleSheet, View, FlatList, TextInput, Button, Text, ActivityIndicator } from 'react-native';
+import FilmItem from './FilmItem';
+import GenreItem from './GenreItem';
+import { getFilmsFromApi, getFilmsFromApiWithSearchedText, getGenresFromApi, getFilmsFromApiByGenre, getLatestFilmsFromApi } from '../API/Api.js';
+//import console = require('console');
 
 export default class Accueil extends React.Component {
 
@@ -14,17 +15,21 @@ export default class Accueil extends React.Component {
             genres: [],
             isLoading: false
         }
-
-        getFilmsFromApi().then(data => {
-            this.setState({ films: data.results })
-        })
-
-        getGenresFromApi().then(data => {
-
-        })
-
-
     }
+
+    componentDidMount(){
+        getFilmsFromApi().then(data => {
+            // console.log(Object.keys(data));
+            this.setState({ films: data })
+            console.log(data[0]);
+        });
+
+        /*getGenresFromApi().then(data => {
+
+        })*/
+    }
+
+    
 
     _loadFilms() {
         if (this.searchedText.length > 0) {
@@ -63,15 +68,15 @@ export default class Accueil extends React.Component {
 
                 <Button title='Nouveautés' onPress={() => this._loadLatestFilms()} />
 
-                <FlatList
+                {/* { <FlatList
                     data={this.state.genres}
-                    keyExtractor={(item) => item.id.toString()}
+                    keyExtractor={(item) => item._id.toString()}
                     renderItem={({item}) => <GenreItem genre={item}/>}
-                />
+                /> } */}
 
                 <FlatList
                     data={this.state.films}
-                    keyExtractor={(item) => item.id.toString()}
+                    keyExtractor={(item) => item._id.toString()}
                     renderItem={({item}) => <FilmItem film={item}/>}
                 />
 
