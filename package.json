@@ -13,7 +13,11 @@
     "npm": "^6.9.0",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+<<<<<<< HEAD
     "react-native-router-flux": "^4.0.6",
+=======
+    "react-navigation": "^3.5.1",
+>>>>>>> 4c9821ac69b985854edd389876297b97fdcc50ce
     "update": "^0.7.4"
   },
   "devDependencies": {
