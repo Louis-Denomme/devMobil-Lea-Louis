@@ -29,7 +29,13 @@ export default class Accueil extends React.Component {
         })*/
     }
 
+    getProtectedQuote() {
+        Alert.alert('We will print a Chuck Norris quote')
+      }
     
+      userLogout() {
+        Actions.Authentication();
+      }
 
     _loadFilms() {
         if (this.searchedText.length > 0) {
